@@ -4,15 +4,15 @@ import torch.nn as nn
 from dataset import get_splits
 from model import BasicCNN
 
-# ── data ─────────────────────────────────────────────────────────────────────
+#  data 
 train_loader, val_loader, test_loader, classes = get_splits(batch_size=32)
 
-# ── model / loss / optimizer ──────────────────────────────────────────────────
+#  model / loss / optimizer 
 model = BasicCNN(num_classes=len(classes))
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
-# ── helpers ───────────────────────────────────────────────────────────────────
+#  helpers
 def run_epoch(loader, train: bool):
     model.train() if train else model.eval()
     total_loss, correct = 0.0, 0
@@ -34,7 +34,7 @@ def run_epoch(loader, train: bool):
     return total_loss / len(loader), correct / n * 100
 
 
-# ── training loop ─────────────────────────────────────────────────────────────
+#  training loop 
 EPOCHS = 20
 
 for epoch in range(1, EPOCHS + 1):
