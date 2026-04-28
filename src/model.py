@@ -9,7 +9,7 @@ class BasicCNN(nn.Module):
     Input: (B, 3, 64, 64)  — matches dataset.py resize
     """
 
-    def __init__(self, num_classes: int = 26):
+    def __init__(self, num_classes: int = 24):
         super().__init__()
 
         # Block 1: 3→16 feature maps, 3×3 kernel; 64×64 → 32×32 after pool
@@ -38,7 +38,7 @@ class BasicCNN(nn.Module):
 
 # ── quick sanity check ──────────────────────────────────────────────────────
 if __name__ == "__main__":
-    model = BasicCNN(num_classes=26)
+    model = BasicCNN(num_classes=24)
     dummy = torch.randn(8, 3, 64, 64)   # same batch size as dataset.py
     out = model(dummy)
-    print("Output shape:", out.shape)   # expect (8, 26)
+    print("Output shape:", out.shape)   # expect (8, 24)

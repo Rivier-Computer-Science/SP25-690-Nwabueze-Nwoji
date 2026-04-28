@@ -18,7 +18,7 @@ small_dataset = Subset(dataset, indices=range(64))
 loader = DataLoader(small_dataset, batch_size=8, shuffle=True)
 
 # ── model / loss / optimizer ─────────────────────────────────────────────────
-model = BasicCNN(num_classes=26)
+model = BasicCNN(num_classes=24)
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
