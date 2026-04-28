@@ -2,12 +2,15 @@ import torch
 import torch.nn as nn
 
 from dataset import get_splits
-from model import BasicCNN
+from model import BasicCNN, ResNetASL
 
 #  data 
 train_loader, val_loader, test_loader, classes = get_splits(batch_size=32)
 
 #  model / loss / optimizer 
+# To switch models, uncomment the one you want to use:
+# model = BasicCNN(num_classes=len(classes))  # current
+# model = ResNetASL(num_classes=len(classes))  # upgrade
 model = BasicCNN(num_classes=len(classes))
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
