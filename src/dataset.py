@@ -3,6 +3,8 @@ from torch.utils.data import DataLoader
 
 transform = transforms.Compose([
     transforms.Resize((64, 64)),
+    transforms.RandomRotation(15),       # different hand angles
+    transforms.ColorJitter(brightness=0.2),  # lighting robustness
     transforms.ToTensor()
 ])
 
